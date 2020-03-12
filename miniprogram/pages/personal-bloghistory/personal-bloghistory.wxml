@@ -1,0 +1,10 @@
+<view>
+  <block wx:for="{{blogList}}" wx:key="_id">
+    <view class="blog-panel">
+      <blog-card 
+      blog="{{item}}" 
+      bind:tap="goComment"
+      data-blogid="{{item._id}}" />
+    </view>
+  </block>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "blog-card": "/components/blog-card/blog-card"
+  },
+  "navigationBarTitleText": "我的发现"
+}
