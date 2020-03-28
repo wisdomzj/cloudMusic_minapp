@@ -1,22 +1,23 @@
-// miniprogram/pages/playlist/playlist.js
-const MAX_LIMIT = 15
-const db = wx.cloud.database()
+// miniprogram/pages/blog-comment/blog-comment.js
+import formatTime from '../../utils/formatTime'
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    swiperImgUrls:[],
-    playlist: []
+    blog: {},
+    commentList: [],
+    blogId: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._getPlaylist()
-    this._getSwiper()
+    this.setData({
+      blogId: options.blogId
+    })
+    this._getBlogDetail()
   },
 
   /**
@@ -51,18 +52,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({
-      playlist:[]
-    })
-    this._getPlaylist()
-    this._getSwiper()
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this._getPlaylist()
+
   },
 
   /**
@@ -72,31 +69,31 @@ Page({
 
   },
 
-  _getPlaylist() {
+  _getBlogDetail(){
     wx.showLoading({
       title: '加载中',
+      mask: true
     })
-    wx.cloud.callFunction({
-      name: 'music',
-      data: {
-        start: this.data.playlist.length,
-        count: MAX_LIMIT,
-        $url: 'playlist',
-      }
-    }).then((res) => {
-      this.setData({
-        playlist: this.data.playlist.concat(res.result.data)
-      })
-      wx.stopPullDownRefresh()
-      wx.hideLoading()
-    })
-  },
 
-  _getSwiper(){
-    db.collection('swiper').get().then((res)=>{
+    wx.cloud.callFunction({
+      name:'blog',
+      data:{
+        blogId: this.data.blogId,
+        $url: 'detail',
+      }
+    }).then((res)=>{
+      console.log(res)
+      let commentList = res.result.commentList.data
+      for(let i = 0,len = commentList.length; i<len; i++){
+        commentList[i].createTime = formatTime(new Date(commentList[i].createTime))
+      }
+
       this.setData({
-        swiperImgUrls: res.data
+        commentList,
+        blog: res.result.detail[0]
       })
+
+      wx.hideLoading()
     })
   }
 })

@@ -121,8 +121,8 @@ Component({
           content: '',
         })
 
-        // 父元素刷新评论页面
-        // this.triggerEvent('refreshCommentList')
+        // 父组件刷新评论页面
+        this.triggerEvent('refreshCommentList')
       })
     }
   }

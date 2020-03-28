@@ -132,6 +132,9 @@ Page({
     this._loadBlogList()
   },
 
-  
-
+  goComment(event) {
+    wx.navigateTo({
+      url: '../../pages/blog-comment/blog-comment?blogId=' + event.target.dataset.blogid,
+    })
+  },
 })

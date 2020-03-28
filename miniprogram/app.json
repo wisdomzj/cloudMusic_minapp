@@ -7,7 +7,8 @@
     "pages/player/player",
     "pages/blog-edit/blog-edit",
     "pages/personal-bloghistory/personal-bloghistory",
-    "pages/personal-playhistory/personal-playhistory"
+    "pages/personal-playhistory/personal-playhistory",
+    "pages/blog-comment/blog-comment"
   ],
   "requiredBackgroundModes": [
     "audio"
