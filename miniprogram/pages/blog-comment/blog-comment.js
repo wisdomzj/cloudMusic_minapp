@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -66,7 +66,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    const blog = this.data.blog
+    return {
+      title: blog.content,
+      path: `/pages/blog-comment/blog-comment?blogId=${blog._id}`,
+    }
   },
 
   _getBlogDetail(){
@@ -82,7 +86,6 @@ Page({
         $url: 'detail',
       }
     }).then((res)=>{
-      console.log(res)
       let commentList = res.result.commentList.data
       for(let i = 0,len = commentList.length; i<len; i++){
         commentList[i].createTime = formatTime(new Date(commentList[i].createTime))

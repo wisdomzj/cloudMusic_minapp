@@ -21,9 +21,9 @@
     </navigator>
   </view>
   <view class="nav-item">
-    <view class="content">
+    <view class="content" bind:tap="onTapQrCode">
       <i class="iconfont icon-weibiaoti--"></i>
-      <text class="text">小程序码功能测试中...</text>
+      <text class="text">小程序码</text>
       <i class="iconfont icon-xiangyou"></i>
     </view>
   </view>

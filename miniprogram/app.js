@@ -18,8 +18,17 @@ App({
     this.getOpenid()
     
     this.globalData = {
-      openid: -1
+      openid: -1,
+      playingMusicId: -1,
     }
+  },
+
+  setPlayMusicId(musicId) {
+    this.globalData.playingMusicId = musicId
+  },
+  
+  getPlayMusicId() {
+    return this.globalData.playingMusicId
   },
 
   getOpenid() {
