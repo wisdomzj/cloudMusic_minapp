@@ -2,5 +2,6 @@
   "usingComponents": {
     "playlist":"/components/playlist/playlist"
   },
+  "navigationBarTitleText": "云音乐",
   "enablePullDownRefresh": true
 }
