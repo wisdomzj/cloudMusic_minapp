@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <el-table
+      v-loading="loading"
       border
       :data="bloglist"
       fit
@@ -45,8 +46,9 @@ export default {
       pagination: {
         total: 0,
         page: 1,
-        limit: 10
+        limit: 5
       },
+      loading: false,
       delblog: {},
       delDialogVisible: false
     }
@@ -57,6 +59,7 @@ export default {
   methods: {
     checkPermission,
     getList() {
+      this.loading = true
       this.$request.blogFindAll({
         start: this.pagination.page,
         count: this.pagination.limit
@@ -65,6 +68,7 @@ export default {
         this.bloglist = list.data.map((item) => {
           return JSON.parse(item)
         })
+        this.loading = false
         this.pagination.total = total
       })
     },

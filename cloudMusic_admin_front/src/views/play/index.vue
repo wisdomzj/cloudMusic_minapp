@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <el-table
+      v-loading="loading"
       border
       :data="playlist"
       fit
@@ -66,8 +67,9 @@ export default {
       pagination: {
         total: 0,
         page: 1,
-        limit: 10
+        limit: 5
       },
+      loading: false,
       playId: '',
       editDialogVisible: false,
       delDialogVisible: false
@@ -79,12 +81,14 @@ export default {
   methods: {
     checkPermission,
     getList() {
+      this.loading = true
       this.$request.playFindAll({
         start: this.pagination.page,
         count: this.pagination.limit
       }).then(res => {
         const { list, total } = res.data
         this.playlist = list
+        this.loading = false
         this.pagination.total = total
       })
     },

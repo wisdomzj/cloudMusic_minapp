@@ -11,7 +11,7 @@ class Blog{
         const len = Number.parseInt(count,10) || 5
         const sum = Math.ceil(total / len)
         const q_get = `
-            db.collection('blog').skip(${curpage}).limit(${len}).orderBy('createTime', 'desc').get()
+            db.collection('blog').skip(${(curpage-1)*len}).limit(${len}).orderBy('createTime', 'desc').get()
         `
         const list = await callCloudDB(ctx, 'databasequery', q_get)
         

@@ -12,7 +12,7 @@ class Play{
         const sum = Math.ceil(total / len)
         const res = await callCloudFn(ctx, 'music', {
             $url: 'playlist',
-            start: curpage,
+            start: (curpage - 1) * len,
             count: len
         })
         let list = []
