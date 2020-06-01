@@ -62,6 +62,7 @@ Page({
         $url: 'musicUrl',
       }
     }).then((res)=>{
+      console.log(res)
       let result = JSON.parse(res.result)
       // vip歌曲
       if (result.data[0].url == null) {
@@ -141,7 +142,7 @@ Page({
       isPlaying: true,
     })
   },
-
+  
   onPause() {
     this.setData({
       isPlaying: false,

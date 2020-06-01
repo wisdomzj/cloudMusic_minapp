@@ -77,6 +77,7 @@ export default {
       this.delDialogVisible = false
       this.loading = true
       this.$request.swiperRemove(this.swiperId).then(res => {
+        console.log(res)
         this.getList()
         this.$notify({
           title: '成功',

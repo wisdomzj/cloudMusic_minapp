@@ -41,7 +41,6 @@ Page({
   },
 
   onFocus(event) {
-    // 模拟器获取的键盘高度为0
     // console.log(event)
     this.setData({
       footerBottom: event.detail.height,
@@ -66,7 +65,6 @@ Page({
         this.setData({
           images: this.data.images.concat(res.tempFilePaths)
         })
-        // 还能再选几张图片
         max = MAX_IMG_NUM - this.data.images.length
         this.setData({
           selectPhoto: max <= 0 ? false : true
@@ -88,7 +86,6 @@ Page({
   },
 
   onPreviewImage(event) {
-    // 6/9
     wx.previewImage({
       urls: this.data.images,
       current: event.target.dataset.imgsrc,
@@ -96,10 +93,6 @@ Page({
   },
 
   send() {
-    // 2、数据 -> 云数据库
-    // 数据库：内容、图片fileID、openid、昵称、头像、时间
-    // 1、图片 -> 云存储 fileID 云文件ID
-
     if (content.trim() === '') {
       wx.showModal({
         title: '请输入内容',
@@ -144,7 +137,7 @@ Page({
           ...userInfo,
           content,
           img: fileIds,
-          createTime: db.serverDate(), // 服务端的时间
+          createTime: db.serverDate(),
         }
       }).then((res) => {
         wx.hideLoading()

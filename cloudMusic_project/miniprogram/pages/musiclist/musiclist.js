@@ -23,6 +23,7 @@ Page({
         $url: 'musiclist'
       }
     }).then((res) => {
+      console.log(res)
       const pl = res.result.playlist
       this.setData({
         musiclist: pl.tracks,

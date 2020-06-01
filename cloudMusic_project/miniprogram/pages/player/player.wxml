@@ -15,7 +15,7 @@
     <progress-bar 
     bind:musicEnd="onNext" 
     bind:timeUpdate="timeUpdate"
-    bind:musicPlay="onPlay" 
+    bind:musicPlay="onPlay"  
     bind:musicPause="onPause"
     isSame="{{isSame}}"
     />

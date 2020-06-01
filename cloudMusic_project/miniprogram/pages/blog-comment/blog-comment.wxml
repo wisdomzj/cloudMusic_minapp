@@ -3,7 +3,7 @@
     <blog-card blog="{{blog}}" />
   </view>
 
-  <!-- 评论点赞tab -->
+  <!-- 评论列表 -->
   <view class="tab">
     <view class="tab-item">评论列表</view>
   </view>

@@ -39,15 +39,14 @@ Component({
 
   lifetimes: {
     ready() {
-      // 750rpx
       wx.getSystemInfo({
         success(res) {
-          // 求出1rpx的大小
           lyricHeight = res.screenWidth / 750 * 64
         },
       })
     }
   },
+
 
   /**
    * 组件的方法列表

@@ -7,7 +7,7 @@ const db = cloud.database()
 const playlistCollection = db.collection("playlist")
 const rp = require('request-promise')
 const url = 'http://musicapi.xiecheng.live/personalized'
-const MAX_LIMIT = 10 
+const MAX_LIMIT = 100 
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -36,6 +36,7 @@ exports.main = async (event, context) => {
     })
   }
 
+  // 比对去重
   for (let i = 0; i < playlist.length;i++){
     let flag = true
     for (let j = 0; j < list.data.length;j++){
